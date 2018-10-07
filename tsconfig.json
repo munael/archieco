@@ -1,0 +1,25 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "outDir": "js",
+        "sourceMap": true,
+        "noImplicitThis": true,
+        "typeRoots": [
+            "../types",
+            "./node_modules/@types"
+        ]
+    },
+    "include": [
+        "types/",
+        "ts/"
+    ],
+    "exclude": [
+        "ignored/",
+        "**/*.no.ts",
+        "archived/"
+    ]
+}

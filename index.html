@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bonny</title>
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    
+    <link rel="stylesheet" href="main.css"></link>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" defer></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" defer></script> -->
+    <script defer src="http://d3js.org/d3.v3.min.js"></script>
+    <script defer src="https://unpkg.com/split.js/split.min.js"></script>
+
+
+    <script defer src="./js/app.js"></script>
+  </head>
+
+  <body>
+      <input id="inputId" type="file" style="position: fixed; top: -100em">
+    <header class='banner' style='background-color:orange'>
+      <h4>Bonny 0.2    <button id='save-button'>Save</button> <button id='load-button'>Load</button></h4>
+    </header>
+
+    <div id='app'>
+      <div id='canvas' style='background-color:blue'></div>
+      <div id='mpane' style='background-color:darkmagenta'>
+        <p>MPANE <br> <button id='snapshot-button'>Snapshot</button><button id='banner-toggle'>Banners Shown</button></p>
+        <div id='mpane-tab-bar'>
+          <button class='props'>P</button>
+          <button class='bobs'>O</button>
+          <button class='layers'>L</button>
+        </div>
+        <div id='mpane-tabs'>
+          <div class='props' v-if='cbob!==null' style='display:none'>Properties<br>
+            <div class='slider-mod'>
+              <label for='b-name'>Name: </label>
+              <input type='text' id='b-name' v-model='cbob.id'>
+            </div>
+            <div id="pos-panel">
+                Position <br>
+                <div class='slider-mod'>
+                  <label for='x-pos'>X: </label>
+                  <input type='number' id='xp-exact' :value='cbob.px'>
+                  <input type="range" id='x-pos' class='range' v-model.number='cbob.px'
+                    min="-100" max="100"></input>
+                </div>
+                <div class='slider-mod'>
+                  <label for='y-pos'>Y: </label>
+                  <input type='number' id='yp-exact' :value='cbob.py'>
+                  <input type="range" id='y-pos' class='range' v-model.number='cbob.py'
+                    min="-100" max="100"></input>
+                </div>
+              </div>
+              <div id="scale-panel">
+                Scale<br>
+                <div class='slider-mod'>
+                  <label for='x-scale'>X: </label>
+                  <input type='number' id='xs-exact' :value='cbob.bw'>
+                  <input type="range" id='x-scale' class='range' v-model.number='cbob.bw'
+                    min="0" max="100"></input>
+                </div>
+                <div class='slider-mod'>
+                  <label for='y-scale'>Y: </label>
+                  <input type='number' id='ys-exact' :value='cbob.bh'>
+                  <input type="range" id='y-scale' class='range' v-model.number='cbob.bh'
+                    min="0" max="100"></input>
+                </div>
+              </div>
+              <div id="rot-panel">
+                Rotation<br>
+                <div class='slider-mod'>
+                  <label for='rotation'>D: </label>
+                  <input type='number' id='rot-exact' :value='cbob.rot'>
+                  <input type="range" id='rotation' class='range' v-model.number='cbob.rot'
+                    min="0" max="359"></input>
+                </div>
+              </div>
+          </div>
+          <div class='bobs'>Pieces/Items
+            <div id='bobs-mod' class='mod'>
+              <div id='bobs-bar' class='bar'>
+                <button id='bob-add'>+</button>
+                <button id='bob-remove'>–</button>
+              </div>
+              <select multiple id='bobs'>
+                <option v-for='b in bobs' :key='b.id'>{{b.id}}</option>
+              </select>
+            </div>
+          </div>
+          <div class='layers'>Tags/Classes/Types
+            <div id='classes-mod' class='mod'>
+              <div id='classes-bar' class='bar'>
+                <button id='class-add'>+</button>
+                <button id='class-remove'>–</button>
+              </div>
+              <select multiple id='classes'>
+                <option>C1</option>
+                <option>C2</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='hpane' style='background-color:green'>HPANE</div>
+    </div>
+
+    <footer class='banner' style='background-color:red'>Made at the American University in Cairo, 2018;<br>
+    <i>Architecture Engineering Department</i><br>
+    <i>Computer Science and Engineering Department</i></footer>
+  </body>
+
+</html>

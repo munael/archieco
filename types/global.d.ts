@@ -1,0 +1,1 @@
+import Vue = GVue._vue.Vue;

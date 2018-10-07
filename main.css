@@ -1,0 +1,123 @@
+@import 'styles/tree.css';
+
+html {
+    /* overflow: hidden; */
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 
+    For nice text
+*/
+body * {
+    text-shadow: 1px 1px 2px darkgray;
+    font-family: "Consolas", "Segoe UI", sans-serif;
+}
+
+body {
+    padding: 0px;
+    margin: 0;
+    background-color: #333333;
+    color: white;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+
+    display: grid;
+    grid-template-rows: 1fr 20fr 1fr;
+    grid-gap: 5px;
+    grid-template-areas:
+        "header"
+        "ui"
+        "footer";
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-area: ui;
+
+    grid-gap: 4px;
+    grid-template-rows: 15fr 5fr;
+    grid-template-columns: 15fr 4fr;
+    grid-template-areas:
+        "canv mpane"
+        "hpane hpane";
+
+}
+
+header {
+    grid-area: header;
+    padding: 0 0 0 9pt;
+}
+
+footer {
+    grid-area: footer;
+    font-size: 9pt;
+    padding: 3px;
+}
+
+#canvas {
+    min-height: 0;
+    min-width: 0;
+    line-height: 0;
+    overflow: hidden;
+    grid-area: canv;
+}
+
+#mpane {
+    grid-area: mpane;
+    max-height: 100%;
+    overflow: auto;
+    padding: 0 4pt 0 4pt;
+}
+
+#bobs-bar {
+    margin: auto auto 5px auto;
+}
+
+#bobs {
+    width: 100%;
+}
+
+#layers {
+    width: 100%;
+}
+
+.slider-mod {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 1;
+    max-width: 100%;
+}
+.slider-mod > input[type=number] {
+    flex-basis: 20%;
+    margin: 2pt;
+}
+.slider-mod > * {
+    min-width: 0;
+}
+
+#hpane {
+    grid-area: hpane;
+}
+
+button {
+    margin: 0;
+    padding: 4px 8px;
+}
+
+.range {
+    cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
